@@ -5,16 +5,20 @@ import numpy as np
 import os
 from utility import parse_arguments
 
+import argparse
+
+
+
 args = parse_arguments()
-roadnet = 'data/{}/roadnet.json'.format(args.scenario)
+roadnet = "mnt/data/{}/roadnet.json".format(args.scenario)
 
 if __name__ == "__main__":
     ## configuration for both environment and agent
     config = {
         'scenario': args.scenario,
-        'data': 'data/{}'.format(args.scenario),
+        'data': 'mnt/data/{}'.format(args.scenario),
         'roadnet': roadnet,
-        'flow': 'data/{}/flow.json'.format(args.scenario),
+        'flow': 'mnt/data/{}/flow.json'.format(args.scenario),
         #'replay_data_path': 'data/frontend/web',
         'num_step': args.num_step,
         'lane_phase_info': parse_roadnet(roadnet)  # get lane and phase mapping by parsing the roadnet
@@ -83,6 +87,7 @@ if __name__ == "__main__":
         if e % 10 == 0:
             if not os.path.exists("model"):
                 os.makedirs("model")
+            #torch.save(agent.model.state_dict(), "model/trafficLight-dqn-{}.pth".format(e))
             agent.model.save("model/trafficLight-dqn-{}.h5".format(e))
 
     # log environment files

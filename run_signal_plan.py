@@ -10,9 +10,9 @@ eng = engine.Engine(sim_setting_control["interval"],
                     sim_setting_control["saveReplay"],
                     sim_setting_control["rlTrafficLight"],
                     sim_setting_control["changeLane"])
-roadnetFile = "data/{}/roadnet.json".format(args.scenario)
-flowFile = "data/{}/flow.json".format(args.scenario)
-planFile = "data/{}/signal_plan_template.txt".format(args.scenario)
+roadnetFile = "mnt/data/{}/roadnet.json".format(args.scenario)
+flowFile = "mnt/data/{}/flow.json".format(args.scenario)
+planFile = "mnt/data/{}/signal_plan_template.txt".format(args.scenario)
 eng.load_roadnet(roadnetFile)
 eng.load_flow(flowFile)
 plan = pd.read_csv(planFile, sep="\t", header=0, dtype=int)

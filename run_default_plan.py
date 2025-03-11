@@ -13,8 +13,8 @@ eng = engine.Engine(sim_setting_default["interval"],
                     sim_setting_default["saveReplay"],
                     sim_setting_default["rlTrafficLight"],
                     sim_setting_default["changeLane"])
-roadnetFile = "data/{}/roadnet.json".format(args.scenario)
-flowFile = "data/{}/flow.json".format(args.scenario)
+roadnetFile = "mnt/data/{}/roadnet.json".format(args.scenario)
+flowFile = "mnt/data/{}/flow.json".format(args.scenario)
 eng.load_roadnet(roadnetFile)
 eng.load_flow(flowFile)
 

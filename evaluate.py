@@ -22,10 +22,10 @@ def main():
 
 
 def evaluate_one_traffic(dic_sim_setting, scenario):
-    roadnetFile = "data/{}/roadnet.json".format(scenario)
-    flowFile = "data/{}/flow.json".format(scenario)
-    planFile = "data/{}/signal_plan_template.txt".format(scenario)
-    outFile = "data/{}/evaluation.txt".format(scenario)
+    roadnetFile = "mnt/data/{}/roadnet.json".format(scenario)
+    flowFile = "mnt/data/{}/flow.json".format(scenario)
+    planFile = "mnt/data/{}/signal_plan_trained.txt".format(scenario)
+    outFile = "mnt/data/{}/evaluation.txt".format(scenario)
 
     if check(planFile, dic_sim_setting["num_step"]):
         tt = cal_travel_time(dic_sim_setting, roadnetFile, flowFile, planFile)
@@ -34,11 +34,11 @@ def evaluate_one_traffic(dic_sim_setting, scenario):
         print("====================== travel time ======================\n")
         b = baseline_tt[scenario]
         score = (b - tt)/b
-        print("====================== score ======================")
-        print("scenario_{0}: {1}".format(scenario, score))
-        print("====================== score ======================")
-        with open(outFile, "w") as f:
-            f.write(str(score))
+        #print("====================== score ======================")
+        #print("scenario_{0}: {1}".format(scenario, score))
+        #print("====================== score ======================")
+        #with open(outFile, "w") as f:
+            #f.write(str(score))
     else:
         print("planFile is invalid, Rejected!")
 
